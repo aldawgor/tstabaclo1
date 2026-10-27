@@ -28,8 +28,10 @@ CLASS zcl_pw_tst01 IMPLEMENTATION.
 
 
   METHOD init_data.
+    TYPES tt_data TYPE STANDARD TABLE OF zpw_tst1_01 WITH EMPTY KEY.
+
     " test data is fixed in code, UUIDs are generated at runtime
-    DATA(lt_data) = VALUE STANDARD TABLE OF zpw_tst1_01 WITH EMPTY KEY(
+    DATA(lt_data) = VALUE tt_data(
       ( line_id = 'LINE001' line_txt = 'Alpha' )
       ( line_id = 'LINE002' line_txt = 'Beta' )
       ( line_id = 'LINE003' line_txt = 'Gamma' )
