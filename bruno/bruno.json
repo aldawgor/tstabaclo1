@@ -1,0 +1,6 @@
+{
+  "version": "1",
+  "name": "ZAPI_PW_TST1_01_O4 Web API",
+  "type": "collection",
+  "ignore": ["node_modules", ".git"]
+}

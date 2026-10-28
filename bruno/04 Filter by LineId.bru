@@ -1,0 +1,23 @@
+meta {
+  name: 04 Filter by LineId
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{serviceUrl}}TestLines?$filter=LineId%20eq%20'LINE003'
+  body: none
+  auth: inherit
+}
+
+headers {
+  Accept: application/json
+}
+
+tests {
+  test("returns Gamma", function() {
+    expect(res.getStatus()).to.equal(200);
+    expect(res.getBody().value).to.have.lengthOf(1);
+    expect(res.getBody().value[0].LineTxt).to.equal("Gamma");
+  });
+}

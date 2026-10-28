@@ -1,0 +1,18 @@
+meta {
+  name: 03 Count
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{serviceUrl}}TestLines/$count
+  body: none
+  auth: inherit
+}
+
+tests {
+  test("count is 10", function() {
+    expect(res.getStatus()).to.equal(200);
+    expect(String(res.getBody()).trim()).to.equal("10");
+  });
+}

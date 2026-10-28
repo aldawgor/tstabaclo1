@@ -1,0 +1,22 @@
+meta {
+  name: 06 Top 3 by text desc
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{serviceUrl}}TestLines?$orderby=LineTxt%20desc&$top=3&$select=LineId,LineTxt
+  body: none
+  auth: inherit
+}
+
+headers {
+  Accept: application/json
+}
+
+tests {
+  test("returns 3 lines", function() {
+    expect(res.getStatus()).to.equal(200);
+    expect(res.getBody().value).to.have.lengthOf(3);
+  });
+}

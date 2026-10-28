@@ -1,0 +1,17 @@
+meta {
+  name: 01 Metadata
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{serviceUrl}}$metadata
+  body: none
+  auth: inherit
+}
+
+tests {
+  test("status 200", function() {
+    expect(res.getStatus()).to.equal(200);
+  });
+}

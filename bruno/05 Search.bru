@@ -1,0 +1,22 @@
+meta {
+  name: 05 Search
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{serviceUrl}}TestLines?$search=gam
+  body: none
+  auth: inherit
+}
+
+headers {
+  Accept: application/json
+}
+
+tests {
+  test("finds at least one line", function() {
+    expect(res.getStatus()).to.equal(200);
+    expect(res.getBody().value.length).to.be.above(0);
+  });
+}
