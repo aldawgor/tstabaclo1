@@ -1,15 +1,19 @@
-auth {
-  mode: basic
+headers {
+  Cookie: {{cookie}}
 }
 
-auth:basic {
-  username: {{user}}
-  password: {{password}}
+auth {
+  mode: none
 }
 
 docs {
   OData V4 Web API ZAPI_PW_TST1_01_O4 (service definition ZUI_PW_TST1_01, entity set TestLines).
 
-  Auth: Basic, communication user from the Communication Arrangement.
-  Set serviceUrl and user in environment "Trial"; password is a secret variable (stored only locally by Bruno).
+  Auth: browser session cookie (ABAP Trial has no Communication Arrangement apps, so Basic Auth
+  with a communication user is not possible there).
+  1. Open serviceUrl in the browser and log in.
+  2. F12 > Network > reload > first request > Request Headers > copy the whole "Cookie" value.
+  3. Paste it into the secret variable "cookie" of environment "Trial". Repeat when the session expires (401/403).
+
+  With a Communication Arrangement: set auth mode to basic (communication user) and remove the Cookie header.
 }
